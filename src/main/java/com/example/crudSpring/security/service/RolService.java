@@ -1,13 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.crudSpring.security.service;
 
-/**
- *
- * @author Romina Chiti
- */
+import com.example.crudSpring.security.entity.Rol;
+import com.example.crudSpring.security.enums.RolNombre;
+import com.example.crudSpring.security.repository.RolRepository;
+import java.util.Optional;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
 public class RolService {
+ 
+    @Autowired
+    RolRepository rolRepository;
     
+    public Optional<Rol> findByRolNombre(RolNombre rolNombre){
+        return rolRepository.findByRolNombre(rolNombre);
+    }
 }
