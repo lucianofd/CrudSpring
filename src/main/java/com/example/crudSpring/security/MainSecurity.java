@@ -37,7 +37,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    //borrado en antMatcher(...antePattern:)
+    //borrado en antMatcher(...antePattern:) 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
