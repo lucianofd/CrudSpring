@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,9 @@ public class ProductoController {
         
     }
      
+    //notacion@PreAuthorize limito el acceso segun  rol
+    
+    @PreAuthorize("HasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ProductoDto productoDto) {
         
@@ -74,6 +78,7 @@ public class ProductoController {
         return new ResponseEntity(new Mensajes("Producto creado"), HttpStatus.OK);
     }
     
+    @PreAuthorize("HasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")int id,   @RequestBody ProductoDto productoDto) {
         if(!productoService.existsById(id))
@@ -96,6 +101,7 @@ public class ProductoController {
         return new ResponseEntity(new Mensajes("Producto actualizado"), HttpStatus.OK);
     }
     
+    @PreAuthorize("HasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!productoService.existsById(id))

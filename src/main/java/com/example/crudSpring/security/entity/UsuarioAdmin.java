@@ -40,7 +40,7 @@ public class UsuarioAdmin implements UserDetails  {
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return authorities; 
     }
 
     @Override
